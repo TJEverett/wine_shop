@@ -1,9 +1,12 @@
 import React from "react";
+import Header from "./Header";
+import AppControl from "./AppControl";
 
 function App() {
   return (
     <React.Fragment>
-      <h1>TEMP</h1>
+      <Header />
+      <AppControl />
     </React.Fragment>
   );
 }

@@ -16,7 +16,7 @@ function Category(props) {
               <Drink name={drink.name}
               origin={drink.origin}
               price={drink.price}
-              stock={drink.stock} />
+              stock={stockConvert(drink.stock)} />
               {props.buttonList.map((button, index) => 
                 <CustomButton whenClicked={() => button.func(drink.id)} disabledState={false} buttonText={button.text} key={index} />
               )}
@@ -26,6 +26,10 @@ function Category(props) {
       </React.Fragment>
     );
   }
+}
+
+function stockConvert(number) {
+  return (number >= 50) ? "High" : (number > 0) ? "Limited" : "Out of Stock";
 }
 
 Category.defaultProps = {

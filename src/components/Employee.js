@@ -31,7 +31,7 @@ function Employee(props) {
               origin={drink.origin}
               price={drink.price}
               stock={drink.stock.toString()} />
-              <CustomButton whenClicked={() => props.restockFunction(drink.id, 1)} disabledState={false} buttonText="Add 1 Keg" />
+              <CustomButton whenClicked={() => props.restockFunction(drink.id, 124)} disabledState={false} buttonText="Add 1 Keg" />
               <CustomButton whenClicked={() => props.deleteFunction(drink.id)} disabledState={false} buttonText="Delete" />
             </div>
           )}

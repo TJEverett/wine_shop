@@ -58,7 +58,7 @@ class Customer extends React.Component {
   }
 
   render(){
-    const buttonArray = [{func: this.props.orderFunction, text: "Order 1"}];
+    const buttonArray = [{func: (drinkId) => this.props.orderFunction(drinkId, -1), text: "Order 1"}];
     return(
       <React.Fragment>
         <Category drinkList={this.state.pinkList} headerText="Pink Wines" drinkStyle="pink" buttonList={buttonArray} />

@@ -58,18 +58,17 @@ class Customer extends React.Component {
   }
 
   render(){
-    const buttonArray = [{func: (drinkId) => this.props.orderFunction(drinkId, -1), text: "Order 1"}];
     return(
       <React.Fragment>
-        <Category drinkList={this.state.pinkList} headerText="Pink Wines" subHeaderText="Floral, Aids alertness" drinkStyle="pink" buttonList={buttonArray} />
-        <Category drinkList={this.state.orangeList} headerText="Orange Wines" subHeaderText="Fruity with notes of ginger" drinkStyle="orange" buttonList={buttonArray} />
-        <Category drinkList={this.state.yellowList} headerText="Yellow Wines" subHeaderText="Bold & deep without guilt" drinkStyle="yellow" buttonList={buttonArray} />
-        <Category drinkList={this.state.auburnList} headerText="Auburn Wines" subHeaderText="Spicy taste with an earthy aroma" drinkStyle="auburn" buttonList={buttonArray} />
-        <Category drinkList={this.state.redList} headerText="Red Wines" subHeaderText="Flavorful with a pleasant burn" drinkStyle="red" buttonList={buttonArray} />
-        <Category drinkList={this.state.sapphireList} headerText="Sapphire Wines" subHeaderText="Nutty taste with hints of honey" drinkStyle="sapphire" buttonList={buttonArray} />
-        <Category drinkList={this.state.blueList} headerText="Blue Wines" subHeaderText="Complex notes of berry & lemon" drinkStyle="blue" buttonList={buttonArray} />
-        <Category drinkList={this.state.violetList} headerText="Violet Wines" subHeaderText="Spiced sandalwood aroma" drinkStyle="violet" buttonList={buttonArray} />
-        <Category drinkList={this.state.othersList} headerText="Other Drinks" subHeaderText="Not actually wine" drinkStyle="white" buttonList={buttonArray} />
+        <Category drinkList={this.state.pinkList} headerText="Pink Wines" subHeaderText="Floral, Aids alertness" drinkStyle="pink" buttonList={this.props.buttonArray} />
+        <Category drinkList={this.state.orangeList} headerText="Orange Wines" subHeaderText="Fruity with notes of ginger" drinkStyle="orange" buttonList={this.props.buttonArray} />
+        <Category drinkList={this.state.yellowList} headerText="Yellow Wines" subHeaderText="Bold & deep without guilt" drinkStyle="yellow" buttonList={this.props.buttonArray} />
+        <Category drinkList={this.state.auburnList} headerText="Auburn Wines" subHeaderText="Spicy taste with an earthy aroma" drinkStyle="auburn" buttonList={this.props.buttonArray} />
+        <Category drinkList={this.state.redList} headerText="Red Wines" subHeaderText="Flavorful with a pleasant burn" drinkStyle="red" buttonList={this.props.buttonArray} />
+        <Category drinkList={this.state.sapphireList} headerText="Sapphire Wines" subHeaderText="Nutty taste with hints of honey" drinkStyle="sapphire" buttonList={this.props.buttonArray} />
+        <Category drinkList={this.state.blueList} headerText="Blue Wines" subHeaderText="Complex notes of berry & lemon" drinkStyle="blue" buttonList={this.props.buttonArray} />
+        <Category drinkList={this.state.violetList} headerText="Violet Wines" subHeaderText="Spiced sandalwood aroma" drinkStyle="violet" buttonList={this.props.buttonArray} />
+        <Category drinkList={this.state.othersList} headerText="Other Drinks" subHeaderText="Not actually wine" drinkStyle="white" buttonList={this.props.buttonArray} />
       </React.Fragment>
     );
   }
@@ -114,12 +113,13 @@ class Customer extends React.Component {
 }
 
 Customer.defaultProps = {
-  drinkList: []
+  drinkList: [],
+  buttonArray: []
 }
 
 Customer.propTypes = {
   drinkList: PropTypes.array,
-  orderFunction: PropTypes.func
+  buttonArray: PropTypes.array
 }
 
 export default Customer;

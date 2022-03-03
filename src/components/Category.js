@@ -4,13 +4,19 @@ import Drink from "./Drink";
 import CustomButton from "./CustomButton";
 
 function Category(props) {
+  const table = {
+    display: "grid",
+    gridTemplateColumns: "1fr 1fr 1fr"
+  };
+
   if(props.drinkList.length === 0) {
     return(null);
   } else {
     return(
       <React.Fragment>
         <h2 className="center">{props.headerText}</h2>
-        <div className="table">
+        <h4 className="center">{props.subHeaderText}</h4>
+        <div style={table}>
           {props.drinkList.map((drink) =>
             <div className={`cell ${props.drinkStyle}`} key={drink.id}>
               <Drink name={drink.name}
@@ -41,6 +47,7 @@ Category.propTypes = {
   drinkList: PropTypes.array,
   buttonList: PropTypes.array,
   headerText: PropTypes.string,
+  subHeaderText: PropTypes.string,
   drinkStyle: PropTypes.string
 }
 

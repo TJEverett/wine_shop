@@ -300,7 +300,7 @@ class AppControl extends React.Component {
       currentlyVisibleComponent = <Employee drinkList={this.state.masterDrinkList} newDrinkFunction={this.createDrink} deleteFunction={this.deleteDrink} restockFunction={this.changeDrinkStock}/>;
       currentlyVisibleButton = <CustomButton whenClicked={this.switchView} disabledState={false} buttonText="Change to Customer View" />;
     } else if(this.state.selectedDrink !== null) {
-      currentlyVisibleComponent = <Details drink={this.state.selectedDrink} orderFunction={this.changeDrinkStock} />;
+      currentlyVisibleComponent = <Details drink={this.state.selectedDrink} />;
       currentlyVisibleButton = <CustomButton whenClicked={this.switchView} disabledState={false} buttonText="Return to Menu" />
     } else {
       currentlyVisibleComponent = <h2>Page Broke</h2>;

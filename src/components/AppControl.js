@@ -1,5 +1,6 @@
 import React from "react";
 import Customer from "./Customer";
+import Employee from "./Employee";
 import CustomButton from "./CustomButton";
 
 class AppControl extends React.Component {
@@ -237,6 +238,35 @@ class AppControl extends React.Component {
     this.setState({pageName: newValue});
   }
 
+  createDrink = (newDrink) => {
+    const newMasterDrinkList = this.state.masterDrinkList.concat(newDrink);
+    this.setState({
+      masterDrinkList: newMasterDrinkList
+    });
+  }
+
+  deleteDrink = (drinkId) => {
+    const newMasterDrinkList = this.state.masterDrinkList.filter(drink => drink.id !== drinkId);
+    this.setState({
+      masterDrinkList: newMasterDrinkList
+    });
+  }
+
+  restockDrink = (drinkId, newKegs) => {
+    let tempMasterDrinkList = JSON.parse(JSON.stringify(this.state.masterDrinkList));
+    const currentPosition = tempMasterDrinkList.findIndex(item => item.id === drinkId);
+    if(currentPosition === -1){
+      console.log("ERROR: AppControl-restockDrink: Id not in masterDrinkList");
+    }else{
+      let currentDrink = tempMasterDrinkList[currentPosition];
+      currentDrink.stock = currentDrink.stock + (newKegs * 124);
+      tempMasterDrinkList[currentPosition] = currentDrink;
+      this.setState({
+        masterDrinkList: tempMasterDrinkList
+      });
+    }
+  }
+
   purchaseDrink = (drinkId) => {
     let tempMasterDrinkList = JSON.parse(JSON.stringify(this.state.masterDrinkList));
     const currentPosition = tempMasterDrinkList.findIndex(item => item.id === drinkId);
@@ -265,7 +295,7 @@ class AppControl extends React.Component {
       currentlyVisibleComponent = <Customer drinkList={this.state.masterDrinkList} orderFunction={this.purchaseDrink} />;
       currentlyVisibleButton = <CustomButton whenClicked={this.switchView} disabledState={false} buttonText="Change to Employee View" />;
     } else if(this.state.pageName === "Employee") {
-      currentlyVisibleComponent = <h2>Employee View</h2>;
+      currentlyVisibleComponent = <Employee drinkList={this.state.masterDrinkList} newDrinkFunction={this.createDrink} deleteFunction={this.deleteDrink} restockFunction={this.restockDrink}/>;
       currentlyVisibleButton = <CustomButton whenClicked={this.switchView} disabledState={false} buttonText="Change to Customer View" />;
     } else {
       currentlyVisibleComponent = <h2>Page Broke</h2>;
